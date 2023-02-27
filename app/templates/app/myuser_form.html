@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create a User</h1>
+    </div>
+   
+    <form class="user" method="post" action="{% url 'app:create_user' %}">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-info">Create user</button>
+    </form>
+{% endblock content %}
+

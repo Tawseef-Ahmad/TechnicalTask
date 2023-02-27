@@ -1,0 +1,63 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="text-center">
+    <h1>
+  
+      Welcome to the my site
+    </h1>
+  </div>
+
+  
+
+{% if user.is_authenticated %}
+<div style="text-align: right;">
+    <a href="{% url 'app:create_user' %}" class="btn btn-info" role="button">Add User</a>
+    <a href="{% url 'app:logout_page' %}" class="btn btn-info" role="button">Logout</a>
+  </div>
+
+<div class="container">
+    <h2 class="text-center"><u>All Users</u></h2><br>            
+    <table class="table table-dark table-striped">
+      <thead>
+        {% if object_list %}
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Qualification</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      {% for i in object_list %}
+        <tr>
+          <td>{{i.name}}</td>
+          <td>{{i.email}}</td>
+          <td>{{i.address}}</td>
+          <td>{{i.qualification}}</td>
+          <td>
+            <a  href="{% url 'app:user_detail'  i.pk  %}">details</a><br />
+            <a  href="{% url 'app:update_user'  i.pk  %}">edit</a><br />
+            <a  href="{% url 'app:delete_user'  i.pk  %}">delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+      
+      </tbody>
+    </table>
+    {% else %}
+    <div style="text-align: center;">No users to display</div>
+    
+  </div>
+
+  <!--  -->
+ 
+  {% endif %}
+  {% else %}
+  <p>Please authenticate yourself</p>
+  {% endif %}
+{% endblock content %}

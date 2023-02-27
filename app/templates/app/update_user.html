@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">update User</h1>
+    </div>
+   
+    <form class="user" method="post" action="{% url 'app:update_user'  object.pk %}">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-info">Update user</button>
+    </form>
+{% endblock content %}
