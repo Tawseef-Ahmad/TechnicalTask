@@ -1,0 +1,3 @@
+In .env file please mention your email id  and  application specific password of your email, which you can generate from your email (search internet for steps to generate apllication specific password). 
+
+For gmail tap the security option of your account, then go to signing in to google section click on App passwords and follow the steps to create application specific password. Make sure your two step verification is on otherwise App passwords option will not appear.
